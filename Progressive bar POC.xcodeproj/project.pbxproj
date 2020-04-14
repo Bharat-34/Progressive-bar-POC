@@ -16,8 +16,6 @@
 		4F2B9B5324443C8A00CCEC89 /* Progressive_bar_POCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2B9B5224443C8A00CCEC89 /* Progressive_bar_POCTests.swift */; };
 		4F2B9B5E24443C8A00CCEC89 /* Progressive_bar_POCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2B9B5D24443C8A00CCEC89 /* Progressive_bar_POCUITests.swift */; };
 		4F2B9B6C2444437C00CCEC89 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2B9B6B2444437C00CCEC89 /* Extension.swift */; };
-		4F2B9B6E2444A98200CCEC89 /* semiCircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2B9B6D2444A98200CCEC89 /* semiCircleProgress.swift */; };
-		4F2B9B722444D7DD00CCEC89 /* Rectangleprogressbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2B9B712444D7DD00CCEC89 /* Rectangleprogressbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +51,6 @@
 		4F2B9B5D24443C8A00CCEC89 /* Progressive_bar_POCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progressive_bar_POCUITests.swift; sourceTree = "<group>"; };
 		4F2B9B5F24443C8A00CCEC89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F2B9B6B2444437C00CCEC89 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		4F2B9B6D2444A98200CCEC89 /* semiCircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = semiCircleProgress.swift; sourceTree = "<group>"; };
-		4F2B9B712444D7DD00CCEC89 /* Rectangleprogressbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangleprogressbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +104,6 @@
 				4F2B9B3B24443C8900CCEC89 /* AppDelegate.swift */,
 				4F2B9B3D24443C8900CCEC89 /* SceneDelegate.swift */,
 				4F2B9B3F24443C8900CCEC89 /* ContentView.swift */,
-				4F2B9B6D2444A98200CCEC89 /* semiCircleProgress.swift */,
-				4F2B9B712444D7DD00CCEC89 /* Rectangleprogressbar.swift */,
 				4F2B9B6B2444437C00CCEC89 /* Extension.swift */,
 				4F2B9B4124443C8A00CCEC89 /* Assets.xcassets */,
 				4F2B9B4624443C8A00CCEC89 /* LaunchScreen.storyboard */,
@@ -278,8 +272,6 @@
 			files = (
 				4F2B9B3C24443C8900CCEC89 /* AppDelegate.swift in Sources */,
 				4F2B9B3E24443C8900CCEC89 /* SceneDelegate.swift in Sources */,
-				4F2B9B722444D7DD00CCEC89 /* Rectangleprogressbar.swift in Sources */,
-				4F2B9B6E2444A98200CCEC89 /* semiCircleProgress.swift in Sources */,
 				4F2B9B4024443C8900CCEC89 /* ContentView.swift in Sources */,
 				4F2B9B6C2444437C00CCEC89 /* Extension.swift in Sources */,
 			);
