@@ -18,6 +18,8 @@ extension Color {
     static let outlineColor = Color.rgb(r: 54, g: 225, b: 203)
     static let trackColor = Color.rgb(r: 45, g: 56, b: 95)
     static let pulsatingColor = Color.rgb(r: 73, g: 113, b: 148)
+    static let grass = Color.rgb(r: 89, g: 173, b: 50)
+    static let greenTeal = Color.rgb(r: 180, g: 243, b: 151)
     
 }
 
