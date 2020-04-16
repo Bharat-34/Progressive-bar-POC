@@ -15,25 +15,42 @@ struct ContentView: View {
     var body: some View {
         
         ZStack{
-            LinearGradient(gradient: Gradient(colors: [Color.orange, Color.blue]), startPoint: .top, endPoint: .bottom)
+//            LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.8), Color.white]), startPoint: .top, endPoint: .bottom)
+                
+            Color.red
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                Spacer()
+                Spacer(minLength: 50)
+                                    
                 ZStack{
                     
                     Track()
-                    Label(percentage: percentage)
+                        .frame(width: 5)
+                    
                     Outline(percentage: percentage)
-                }
+                    .frame(width: 5)
+
+                }.padding(.leading,100)
+                .offset(x: -80, y: 0)
                 
-                Spacer()
+                ZStack{
+                    
+                    Track1()
+                        .frame(width: 5)
+                                        
+                    Outline1(percentage: percentage)
+                        .frame(width: 5)
+
+                }.padding(.trailing,100)
+                .offset(x: 70, y: -259)
+                
                 
                 HStack{
                     
                 Button(action: {
                     self.percentage = CGFloat(50)
                 }){
-                    
+
                     Text("50")
                         .font(.title)
                         .foregroundColor(.red)
@@ -43,10 +60,10 @@ struct ContentView: View {
                 }
                     
                 Button(action: {
-                    self.percentage = CGFloat(30)
+                    self.percentage = CGFloat(100)
                 }){
                     
-                    Text("30")
+                    Text("100")
                         .font(.title)
                         .foregroundColor(.red)
                     .padding()
@@ -76,8 +93,9 @@ struct ContentView: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(10)
+                    
                 }
-
+                    
                 }
             }
         }
@@ -89,30 +107,11 @@ struct Label: View {
     var body: some View {
         ZStack {
             Text(String(format: "%.0f", percentage))
-                .font(.system(size: 65))
+                .font(.system(size: 16))
                 .fontWeight(.heavy)
                 .colorInvert()
         }
     }
-}
-
-struct Outline: View {
-    var percentage: CGFloat = 50
-    var colors: [Color] = [Color.outlineColor]
-    var body: some View {
-        ZStack{
-            Circle()
-                .fill(Color.clear)
-                .frame(width: 200, height: 250)
-            .overlay(
-                Circle()
-                    .trim(from: 0.0, to: percentage * 0.01)
-                    .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                    .fill(LinearGradient(gradient: Gradient(colors: [.outlineColor, .red]), startPoint: .zero, endPoint: .trailing))
-            ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
-        }
-    }
-    
 }
 
 struct Track: View {
@@ -122,13 +121,101 @@ struct Track: View {
     var body: some View {
         ZStack{
             Circle()
+                .trim(from: 0.0, to: 0.5)
                 .fill(Color.clear)
                 .frame(width: 200, height: 250)
+                .rotationEffect(.degrees(90))
             .overlay(
                 Circle()
+                    .trim(from: 0.0, to: 0.5)
                     .trim(from: 0.0, to: percentage / 2)
-                    .stroke(style: StrokeStyle(lineWidth: 20))
+                    .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                     .fill(AngularGradient(gradient: .init(colors: colors), center: .center))
+                    .rotationEffect(.degrees(90))
+            )
+        }
+    }
+}
+
+
+
+struct Outline: View {
+    
+    var percentage: CGFloat = 50
+    var colors: [Color] = [Color.white]
+    
+    var body: some View {
+        ZStack{
+            Circle()
+                .trim(from: 0.0, to: 0.5)
+                .fill(Color.clear)
+                .frame(width: 200, height: 250)
+                .rotationEffect(.degrees(90))
+            .overlay(
+                Circle()
+                    .trim(from: 0.0, to: 0.5)
+                    .trim(from: 0.0, to: percentage*0.01)
+                    .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                    .fill(LinearGradient(gradient: Gradient(colors: [.white, .green]), startPoint: .leading, endPoint: .trailing))
+                    .rotationEffect(.degrees(90))
+            ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
+        }
+    }
+    
+}
+
+struct Label1: View {
+    var percentage: CGFloat = 0
+    var body: some View {
+        ZStack {
+            Text(String(format: "%.0f", percentage))
+                .font(.system(size: 16))
+                .fontWeight(.heavy)
+                .colorInvert()
+        }
+    }
+}
+
+struct Outline1: View {
+    var percentage: CGFloat = 50
+    var colors: [Color] = [Color.white]
+    
+    var body: some View {
+        ZStack{
+            Circle()
+                .trim(from: 0.0, to: 0.5)
+                .fill(Color.clear)
+                .frame(width: 200, height: 250)
+                .rotationEffect(.degrees(-90))
+            .overlay(
+                Circle()
+                    .trim(from: 0.0, to: 0.5)
+                    .trim(from: 0.0, to: percentage*0.01)
+                    .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                    .fill(LinearGradient(gradient: Gradient(colors: [.white, .green]), startPoint: .zero, endPoint: .trailing))
+                    .rotationEffect(.degrees(-90))
+            ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
+        }
+    }
+}
+
+struct Track1: View {
+    var colors: [Color] = [Color.trackColor]
+    var percentage: CGFloat = 50
+    
+    var body: some View {
+        ZStack{
+            Circle()
+                .trim(from: 0.0, to: 0.5)
+                .fill(Color.clear)
+                .frame(width: 200, height: 250)
+                .rotationEffect(.degrees(-90))
+            .overlay(
+                Circle()
+                    .trim(from: 0.0, to: 0.5)
+                    .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                    .fill(AngularGradient(gradient: .init(colors: colors), center: .center))
+                    .rotationEffect(.degrees(-90))
             )
         }
     }
