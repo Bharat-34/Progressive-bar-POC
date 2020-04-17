@@ -38,14 +38,16 @@ struct mainView: View {
                     OutlineTrack(percentage: percentage, linewidth: 12)
                         .frame(width: 150, height: 150)
 
-
                     }.offset(x: 200)
                     
                     ZStack{
                     Circle()
-                        .stroke(style: .init(lineWidth: 3, lineCap: .round, lineJoin: .round, dash: [0.5,6], dashPhase: 1))
+                        .fill(Color.white)
                         .frame(width: 110)
-                        .foregroundColor(.green)
+                        
+                        Ticks(inset: 1, minTickHeight: 5, maxTickHeight: 8)
+                        .stroke(lineWidth: 1)
+                        .foregroundColor(Color.grass)
                         
                         HStack{
                             VStack(alignment: .trailing){
@@ -62,11 +64,11 @@ struct mainView: View {
                             }
                             
                             Divider()
-                                .frame(width: 2, height: 80)
-                                .background(Color.black)
+                                .frame(width: 2, height: 50)
+                                .background(Color.grass)
                             
                             VStack(alignment: .leading){
-                                Text("69")
+                                Text("73")
                                     .font(.system(size: 18))
                                     .fontWeight(.heavy)
                                 Text("QPower")
@@ -153,7 +155,7 @@ struct mainView: View {
                           .background(Color.red)
 
                 }
-            }
+            }.padding()
         }
         }
     }
@@ -165,6 +167,22 @@ struct mainView_Previews: PreviewProvider {
     }
 }
 
+struct nnn:View {
+    
+    var body: some View {
+        ZStack{
+            Circle()
+                .fill(Color.red)
+            
+            Ticks(inset: 8, minTickHeight: 10, maxTickHeight: 20)
+                           .stroke(lineWidth: 2)
+                           .foregroundColor(.white)
+        }
+        
+        
+    }
+        
+}
 
 struct trackLine: View {
     
@@ -213,6 +231,50 @@ struct OutlineTrack: View {
     }
     
 }
+
+
+
+struct Ticks: Shape {
+    
+    let inset: CGFloat
+    let minTickHeight: CGFloat
+    let maxTickHeight: CGFloat
+    let totalTicks = 80
+    let hourTickInterval: Int = 4
+    
+    func path(in rect: CGRect) -> Path {
+        
+        let rect = rect.insetBy(dx: inset, dy: inset)
+        var path = Path()
+        for index in 0..<totalTicks {
+            let condition = index % hourTickInterval == 0
+            let height: CGFloat = condition ? maxTickHeight : minTickHeight
+            path.move(to: topPosition(for: angle(for: index), in: rect))
+            path.addLine(to: bottomPosition(for: angle(for: index), in: rect, height: height))
+        }
+        return path
+    }
+    
+    private func angle(for index: Int) -> CGFloat {
+        return (2 * .pi / CGFloat(totalTicks)) * CGFloat(index)
+    }
+    
+    private func topPosition(for angle: CGFloat, in rect: CGRect) -> CGPoint {
+        let radius = min(rect.height, rect.width)/2
+        let xPosition = rect.midX + (radius * cos(angle))
+        let yPosition = rect.midY + (radius * sin(angle))
+        return CGPoint(x: xPosition, y: yPosition)
+    }
+    
+    private func bottomPosition(for angle: CGFloat, in rect: CGRect, height: CGFloat) -> CGPoint {
+        let radius = min(rect.height, rect.width)/2
+        let xPosition = rect.midX + ((radius - height) * cos(angle))
+        let yPosition = rect.midY + ((radius - height) * sin(angle))
+        return CGPoint(x: xPosition, y: yPosition)
+    }
+}
+
+
 
 //struct Arc: Shape {
 //
